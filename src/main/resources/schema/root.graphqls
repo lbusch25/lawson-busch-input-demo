@@ -1,0 +1,58 @@
+scalar Object
+
+type Query {
+    getFakeGeneric: TaskProperties
+}
+
+type Mutation {
+    testGenericFieldTypeNotFound(taskProperties: TaskPropertyInput!): TaskProperties
+    testGenericFieldListNotWrappedWhenConcreteInput(wrapper: ConcretePropertyInput!): ConcreteProperties
+    testGenericWorkAround(taskConfigurationFields: [TaskConfigurationInput!]!): [TaskField]
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type ConcreteProperties {
+    properties: TaskProperties
+}
+
+type TaskProperties {
+    fields: [TaskField]
+}
+
+type TaskConfiguration {
+    properties: TaskProperties
+}
+
+type TaskField {
+    fieldName: String
+    value: Object #corresponds to a FieldType implementation - can be wrapped Java type or custom
+    type: FieldType
+}
+
+enum FieldType {
+    STRING
+    INTEGER
+    LONG
+    BOOLEAN
+    DOUBLE
+    DATA_EXTRACT
+    RULE_DEFINITIONS
+}
+
+input ConcretePropertyInput {
+    properties: TaskPropertyInput
+}
+
+input TaskPropertyInput {
+    fields: [TaskConfigurationInput]
+}
+
+input TaskConfigurationInput {
+    fieldName: String
+    value: Object
+    type: FieldType
+}
