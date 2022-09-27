@@ -53,8 +53,8 @@ public class GenericDataFetcher {
      * DefaultInputObjectMapper's getFieldType method fails to convert the fields: [TaskField] to a
      * List<TaskConfiguration<?>> - expecting a single TaskConfiguration.
      *
-     * @param wrapper
-     * @return
+     * @param wrapper - a wrapper object with a concrete TaskProperties implementation
+     * @return - the wrapper object
      */
     @DgsMutation
     public ConcreteTaskPropertiesWrapper testGenericFieldListNotWrappedWhenConcreteInput(
