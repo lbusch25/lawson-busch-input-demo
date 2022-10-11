@@ -16,7 +16,7 @@
 	<description>Input serialization demo project</description>
 	<properties>
 		<java.version>17</java.version>
-		<dgs.graphql.version>5.2.2</dgs.graphql.version>
+		<dgs.graphql.version>5.3.0</dgs.graphql.version>
 	</properties>
 
 	<dependencyManagement>
