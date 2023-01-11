@@ -12,7 +12,7 @@ expected return value for each is.
 This demo uses the following technologies:
 
 - Spring Boot 2.7
-- DGS version 5.2.2
+- DGS version 5.5.0
 - Java 17
 
 To run this demo locally:
