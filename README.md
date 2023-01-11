@@ -25,6 +25,7 @@ To run this demo locally:
 Below are example calls:
 
 ```graphql
+#fails with generic implementation and ? operator
 mutation testGenericType($props: TaskPropertyInput!) {
     testGenericFieldTypeNotFound(taskProperties: $props) {
         fields {
@@ -34,6 +35,7 @@ mutation testGenericType($props: TaskPropertyInput!) {
     }
 }
 
+#works as expected when resolved as a return value
 query getFakeGeneric {
     getFakeGeneric {
         fields {
@@ -44,6 +46,7 @@ query getFakeGeneric {
     }
 }
 
+#workaround that unwraps the object structure
 mutation testWorkAround($fields: [TaskConfigurationInput!]!) {
     testGenericWorkAround(taskConfigurationFields: $fields) {
         fieldName
@@ -52,6 +55,7 @@ mutation testWorkAround($fields: [TaskConfigurationInput!]!) {
     }
 }
 
+#fails even with a concrete type for the implementation
 mutation testConcrete($wrapper: ConcretePropertyInput!) {
     testGenericFieldListNotWrappedWhenConcreteInput(wrapper: $wrapper) {
         properties {
